@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.43/Tone.js"></script>
+    <script src="js/jquery-3.6.1.js"></script>
+    <link rel="stylesheet" href="css/accordion.css" />
+    <link rel="stylesheet" type="text/css" href="css/etmobile033123.css" />
+</head>
+<body>
+    <div class="wrapper">
+        <div class="button-div">
+            <button id="start-stop" class="topRow start">Start</button>
+            <button id="update" class="topRow noBlink">Update</button>
+        </div>
+        <ul class="menu">
+            <li id="first">
+                <button class="accordion-control" id="acBPM">+ BPM</button>
+                <div class="accordion-panel apslider">
+                    <span>
+                        <label for="bpmRange" id="bpmLabel">BPM:&nbsp;&nbsp;</label></br>
+                        <input class="slider" id="bpmRange" type="range" min="50" max="200" value="120" step="1"  />
+                    </span>
+                </div>
+            </li>
+            <li>
+                <button class="accordion-control" id="acVol">+ Volume</button>			          
+                <div class="accordion-panel  apslider">                    
+                    <label id="vLabel">Volume: </label></br>
+                    <input class="slider" id="volume" type="range" min="-40" max="40" value="20">
+                </div>
+            </li>
+            <li>
+                <button class="accordion-control" id="acInstrument">+ Instrument</button>			          
+                <div class="accordion-panel">
+                    <div class="gcontainer">
+                        <div class="g-item-1">
+                            <button class="specButtonDown" id="downInstrument" data-inline="true"><span id="bspan">-</span></button>
+                        </div>
+                        <div class="g-item-2" id="instrumentDisplay">                            
+                            <span id="itext"></span>
+                        </div>
+                        <div class="g-item-3">
+                            <button class="specButtonUp" id="upInstrument"><span id="bspan">+</span></button>
+                        </div>
+                        <div class="g-item-4">
+                            <button id="keepButton" class="rangeDefault">Keep Current Range</button>
+                        </div>
+                        <div class="g-item-5">
+                            <button id="keepButton2" class="rangeDefault">Instrument Default Range</button>
+                        </div>
+                    </div>  
+                </div>
+            </li>
+            <li>
+                <button class="accordion-control" id="acLowRange"> + Low Range</button>
+                <div class="accordion-panel ap3div">
+                    <div class="doubleDown">
+                        <div class="RspLeft1" id="downClick">
+                            <button class="specButtonDown" id="downLowRange"><span id="bspan">-</span></button>
+                        </div>
+                        <div class="RspLeft2" id="downClick2">
+                            <button class="specButtonDown" id="downLowRangePlus"><span id="bspan">--</span></button>
+                        </div>
+                    </div>
+                    <div class="spCenter" id="lowRangeDisplay"></div>
+                    <div class="doubleUp">
+                        <div class="RspRight1" id="upClick">
+                            <button Class="specButtonUp" id="upLowRange"><span id="bspan">+</span></button>
+                        </div>
+                        <div class="RspRight2" id="upClick2">
+                            <button Class="specButtonUp" id="upLowRangePlus"><span id="bspan">++</span></button>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <button class="accordion-control" id="acHiRange"> + High Range</button>
+                <div class="accordion-panel ap3div">
+                    <div class="doubleDown">
+                        <div class="RspLeft1">
+                            <button class="specButtonDown" id="downHiRange"><span id="bspan">-</span></button>
+                        </div>
+                        <div class="RspLeft2">
+                            <button class="specButtonDown" id="downHiRangePlus"><span id="bspan">--</span></button>
+                        </div>
+                    </div>
+                    <div class="spCenter" id="hiRangeDisplay"></div>
+                    <div class="doubleUp">
+                        <div class="RspRight1">
+                            <button class="specButtonUp" id="upHiRange"><span id="bspan">+</span></button>
+                        </div>
+                        <div class="RspRight2">
+                            <button class="specButtonUp" id="upHiRangePlus"    ><span id="bspan">++</span></button>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <button class="accordion-control" id="acNoteCount"> + Note Count</button>
+                <div class="accordion-panel ap3div">
+                    <div class="spLeft">
+                        <button class="specButtonDown" id="downNoteCount"><span id="bspan">-</span></button>
+                    </div>
+                    <div class="spCenter" id="noteCountDisplay"></div>
+                    <div class="spRight">
+                        <button class="specButtonUp" id="upNoteCount"><span id="bspan">+</span></button>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <button class="accordion-control" id="acPauseCount">+ Pause Count</button>
+                <div class="accordion-panel ap3div">
+                    <div class="spLeft">
+                        <button class="specButtonDown" id="downPauseCount"><span id="bspan">-</span></button>
+                    </div>
+                    <div class="spCenter" id="pauseCountDisplay"></div>
+                    <div class="spRight">
+                        <button class="specButtonUp" id="upPauseCount"><span id="bspan">+</span></button>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <button class="accordion-control" id="acKey">+ Key</button>
+                <div class="accordion-panel ap3div">
+                    <div class="spLeft">
+                        <button class="specButtonDown" id="downKey"><span id="bspan">-</span></button>
+                    </div>
+                    <div class="spCenter" id="keyDisplay"></div>
+                    <div class="spRight">
+                        <button class="specButtonUp" id="upKey"><span id="bspan">+</span></button>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <button class="accordion-control" id="acScale">+ Scale</button>
+                <div class="accordion-panel ap3div">
+                    <div class="spLeft">
+                        <button class="specButtonDown" id="downScale"><span id="bspan">-</span></button>
+                    </div>
+                    <div class="spCenter" id="scaleDisplay"></div>
+                    <div class="spRight">
+                        <button class="specButtonUp" id="upScale"><span id="bspan">+</span></button>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <button class="accordion-control" id="acReps">+ Repeat Phrase</button>
+                <div class="accordion-panel ap3div">              
+                    <div class="spLeft">
+                        <button class="specButtonDown" id="downReps"><span id="bspan">-</span></button>
+                    </div>                        
+                    <div class="spCenter" id="repsDisplay"></div>
+                    <div class="spRight">
+                        <button class="specButtonUp" id="upReps"><span id="bspan">+</span></button>
+                    </div>
+                </div>
+            </li>
+            <li id="last">
+                <button class="accordion-control">+ Incidentals:
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>     
+                        <span id="i1">OFF</span>
+                        <span class="redx" id="i2"></span>
+                        <span>   ||   </span>
+                        <span id="i3">OFF</span>
+                        <span class="redx" id="i4"></span>
+                </button>
+                <div class="accordion-panel apIncidentals">
+                    <div class="incidentals" id="cboxes">
+                        <div>
+                            <input type="checkbox" id="repeatNotes" ><label for="repeatNotes"> No Repeat Notes&nbsp;&nbsp;</label>
+                            <input type="checkbox" id="octaveLimit"><label for="octaveLimit"> Octave Limit</label>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>   <!-- wrapper -->
+    <span>✌︎❒︎♌︎♓︎♍︎ ❄︎♏︎⌧︎⧫︎ ☝︎♏︎■︎♏︎❒︎⧫︎□︎︎</span>
+    <script src="js/jquery-1.11.0.min.js"></script>			    
+    <script src="js/jquery.accordion-plugin.js"></script>
+    <script>
+        $('.menu').accordion(700);
+        // $('li#first').find('.accordion-control').click();
+        // $('li#first').find('.accordion-control').click();
+    </script>    
+    <script src="js/etmobile.js"></script>
+</body>
+</html>
